@@ -1,0 +1,17 @@
+/* 仅仅使用h1选择器，会产生样式覆盖 */
+/* h1{
+  color: red;
+  font-size: 16px;
+}
+ */
+.head_title {
+	color: red;
+	font-size: 28px;
+	text-align: center;
+}
+.box_img {
+	width: 600px;
+	height: 600px;
+	background: url('../images/vdw.jpg') no-repeat;
+	background-size: cover;
+}
