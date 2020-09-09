@@ -15,6 +15,13 @@ module.exports = {
 	// mode: 'development',
 	entry: {
 		// 打包的入口文件
+		/* 
+		https://segmentfault.com/a/1190000018632153?utm_source=tag-newest
+		@babel/polyfill的引入：a.入口文件中import '@babel/polyfill' b.入口文件中require('@babel/polyfill') c.如下：配置在webpack中组块名称中
+		上面三种方式均是全局引入，就会污染词法环境，同时打包体积较大。
+		为此，如何按需引入@babel/polyfill呢？
+		*/
+		// app: ['@babel/polyfill', './src/main.js'],
 		app: './src/main.js',
 		// 第三方库优先抽离，多个模块共享一个chunk，使用数组的形式，app就不包含vendor1中包含的模块了
 		vendor1: ['react', 'react-dom'],
@@ -41,6 +48,7 @@ module.exports = {
 		}),
 	],
 	optimization: {
+		// webpack4.x默认是开启压缩的，minimize:true可以不声明
 		minimize: true, //为了看到效果，暂时关闭默认打开的压缩
 		//为了让bundle.js中只有自己的包，把该文件中其他所有第三方包都抽离出来
 		splitChunks: {
@@ -68,7 +76,7 @@ module.exports = {
 		},
 		// 压缩js和css选项
 		minimizer: [
-			// 用于js代码的压缩
+			// 用于js代码的压缩，用于压缩js和css的两个插件，声明在minimizer节点，而不是plugins节点
 			new uglifyJsWebpackPlugin({
 				cache: true, //启用缓存，还可以启用缓存并设置缓存路径，例如：cache:'path/to/cache'
 				parallel: true, //启用多进程并行 ，提升构建速度

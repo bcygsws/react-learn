@@ -9,7 +9,7 @@
 ## 安装 babel
 
 -   安装开发依赖：@babel/cli、@babel/core、 @babel/preset-env、 @babel/plugin-transform-runtime、 babel-loader、@babel/preset-react
--   安装运行依赖：@babel/polyfill
+-   安装运行依赖：@babel/polyfill babel 只转译新标准的语法（比如 ES6 箭头函数转译为 ES5 中的函数），而新标准引入的原生对象、原生对象的部分原型方法、新增的 API（Proxy、Set 等），这些 babel 是不会转译的，需要自行安装 polyfill 来解决
 -   在根目录创建 babel 的配置文件 babel.config.js
 -   module.exports = {
 -   presets: ['@babel/preset-react', '@babel/preset-env'],
@@ -19,7 +19,7 @@
 ## 安装 webpack 相关插件
 
 -   安装运行依赖：webpack
--   安装开发依赖：webpack-dev-server html-webpack-plugin mini-css-extract-plugin optimize-css-assets-webpack-plugin uglifyjs-webpack-plugin
+-   安装开发依赖：webpack-dev-server html-webpack-plugin clean-webpack-plugin mini-css-extract-plugin optimize-css-assets-webpack-plugin uglifyjs-webpack-plugin
 -   配置协助打包的加载器 loader
     -   css:style-loader css-loader
     -   less:less less-loader
@@ -30,21 +30,21 @@
     -   编写 postcss 的配置文件 postcss.config.js
     -   module.exports = {
     -   plugins: {
-    -           // autoprefixer为不同版本的浏览器加入前缀
-    -           autoprefixer: {
-    -           	overrideBrowserslist: [
-    -           		// 除了浏览器的版本，>1%表示全球使用率超过1%的浏览器，这里面没有设置该参数
-    -           		'Android 4.1',
-    -           		'iOS 7.1',
-    -           		'Chrome > 31',
-    -           		'ff > 31',
-    -           		'ie >= 8',
-    -           		'last 10 versions', // 所有主流浏览器最近的10个版本用
-    -           	],
-    -           	grid: true,
-    -           },
+    -                 // autoprefixer为不同版本的浏览器加入前缀
+    -                 autoprefixer: {
+    -                 	overrideBrowserslist: [
+    -                 		// 除了浏览器的版本，>1%表示全球使用率超过1%的浏览器，这里面没有设置该参数
+    -                 		'Android 4.1',
+    -                 		'iOS 7.1',
+    -                 		'Chrome > 31',
+    -                 		'ff > 31',
+    -                 		'ie >= 8',
+    -                 		'last 10 versions', // 所有主流浏览器最近的10个版本用
+    -                 	],
+    -                 	grid: true,
+    -                 },
     -   },
     -   };
--   编写 webpack 的配置文件 webpack.config.js,同时需要在 package.json 做一些配置，如："dev":"webpack-dev-server   --open --port 3000 --hot"
+-   编写 webpack 的配置文件 webpack.config.js,同时需要在 package.json 做一些配置，如："dev":"webpack-dev-server --open --port 3000 --hot"
 
-## 经过上面三步可以完成React项目的基本配置
+## 经过上面三步可以完成 React 项目的基本配置

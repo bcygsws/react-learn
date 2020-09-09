@@ -15,6 +15,7 @@ module.exports = {
 	mode: 'development',
 	entry: {
 		// 打包的入口文件
+		// app: ['@babel/polyfill', './src/main.js'],
 		app: './src/main.js',
 		// 第三方库的抽离，多个模块共享一个入口chunk，使用数组的形式，app中就不会抱回vendor1中列出的模块了
 		vendor1: ['react', 'react-dom'],
