@@ -210,6 +210,7 @@ module.exports = {
 				],
 			},
 			// 注意：必须匹配.js和.jsx文件，两者少写一个就将报错：还需要加载器
+			// 注意：babel-loader总是高于@babel/core一个版本，@babel/core 6.x对应babel-loader 7.x @babel/core 7.x对应babel-loader 8.x
 			{
 				test: /\.js|jsx$/,
 				use: 'babel-loader',
